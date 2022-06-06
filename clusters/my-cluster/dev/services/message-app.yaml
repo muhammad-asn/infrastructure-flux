@@ -18,7 +18,7 @@ metadata:
 spec:
   targetNamespace: dev
   interval: 5m0s
-  path: ./
+  path: ./deployments
   prune: true
   sourceRef:
     kind: GitRepository
