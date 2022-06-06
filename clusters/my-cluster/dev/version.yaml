@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: message-app-version
+  namespace: dev
+data:
+  IMAGE_REGISTRY: test
+  BACKEND_SERVICE: "1"

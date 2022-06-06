@@ -1,0 +1,64 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: message-app-repo
+  namespace: flux-system
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/muhammad-asn/message-app
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: message-app-kustomization
+  namespace: flux-system
+spec:
+  targetNamespace: dev
+  interval: 5m0s
+  path: ./
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: message-app-repo
+  validation: client
+  postBuild:
+    substitute:
+      NS_NAME: dev
+    substituteFrom:
+      - kind: ConfigMap
+        name: app-configmap-flux
+      - kind: Secret
+        name: app-secret-flux
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap-flux
+  namespace: flux-system
+data:
+  RABBIT_URL: "amqp://guest:guest@rabbitmq.dev.svc.cluster.local:5672"
+  REDIS_URL: "redis.dev.svc.cluster.local:6379"
+  SERVER_ADDR: "0.0.0.0:8080"
+  EXCHANGE: "main_exchange"
+  QUEUE_BACK: "backend_queue"
+  QUEUE_DB: "db_queue"
+  QUEUE_CACHE: "cache_queue"
+  KEY_FRONT: "frontend_key"
+  KEY_BACK: "backend_key"
+  KEY_DB: "db_key"
+  KEY_CACHE: "cache_key"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret-flux
+  namespace: flux-system
+type: Opaque
+stringData:
+  POSTGRES_URL: "cG9zdGdyZXM6Ly9wb3N0Z3JlczpkZW1vcHN3QHBvc3RncmVzLmRldi5zdmMuY2x1c3Rlci5sb2NhbDo1NDMyL21pY3Jvc2VydmljZXM="
+  POSTGRES_PASSWORD: "ZGVtb3Bzdw=="
