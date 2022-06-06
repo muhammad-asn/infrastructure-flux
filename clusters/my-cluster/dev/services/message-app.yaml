@@ -26,10 +26,12 @@ spec:
   validation: client
   postBuild:
     substitute:
-      NS_NAME: dev
+      NS_NAME: "dev"
     substituteFrom:
       - kind: ConfigMap
         name: app-configmap-flux
+      - kind: ConfigMap
+        name: service-version
       - kind: Secret
         name: app-secret-flux
 
