@@ -7,5 +7,5 @@ data:
   IMAGE_REPOSITORY: docker.io/nuga99
   BACKEND_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-backend-policy:tag"}
   CACHE_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-cache-policy:tag"}
-  DATABASE_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-database-policy:tag"}
+  DATABASE_SERVICE_VERSION: 1.0.1 # {"$imagepolicy": "flux-system:image-database-policy:tag"}
   SERVER_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-server-policy:tag"}
