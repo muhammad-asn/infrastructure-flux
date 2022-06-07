@@ -1,0 +1,22 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: cache
+  namespace: flux-system
+spec:
+  image: docker.io/nuga99/app_cache
+  interval: 1m0s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: image-cache-policy
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: cache
+  policy:
+    semver:
+      range: '>=1.0.0'
