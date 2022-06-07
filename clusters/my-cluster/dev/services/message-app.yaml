@@ -64,4 +64,4 @@ metadata:
 type: Opaque
 stringData:
   POSTGRES_URL: "cG9zdGdyZXM6Ly9wb3N0Z3JlczpkZW1vcHN3QHBvc3RncmVzLmRldi5zdmMuY2x1c3Rlci5sb2NhbDo1NDMyL21pY3Jvc2VydmljZXM="
-  POSTGRES_PASSWORD: "ZGVtb3Bzdw=="
+  POSTGRES_PASSWORD: "ZGVtb3Bzdw==s"
