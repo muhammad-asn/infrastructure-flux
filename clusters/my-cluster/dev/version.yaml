@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 data:
   IMAGE_REPOSITORY: docker.io/nuga99
-  BACKEND_SERVICE_VERSION: 1.0.0
-  CACHE_SERVICE_VERSION: 1.0.0
-  DATABASE_SERVICE_VERSION: 1.0.0
-  SERVER_SERVICE_VERSION: 1.0.0
+  BACKEND_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-backend-policy"}
+  CACHE_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-cache-policy"}
+  DATABASE_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-database-policy"}
+  SERVER_SERVICE_VERSION: 1.0.0 # {"$imagepolicy": "flux-system:image-server-policy"}
